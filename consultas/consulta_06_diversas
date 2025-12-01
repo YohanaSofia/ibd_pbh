@@ -1,0 +1,58 @@
+SELECT regional, COUNT(*) AS total
+FROM cadunico
+GROUP BY regional
+ORDER BY total DESC;
+
+SELECT bolsa_familia, pop_rua, COUNT(*) AS total
+FROM cadunico
+GROUP BY bolsa_familia, pop_rua;
+
+SELECT regional, AVG(idade) AS idade_media
+FROM cadunico
+GROUP BY regional;
+
+SELECT regional, AVG(idade) AS idade_media
+FROM poprua
+GROUP BY regional;
+
+SELECT GRAU_INSTRUCAO, COUNT(*) AS total
+FROM poprua
+GROUP BY GRAU_INSTRUCAO
+order by total DESC
+
+SELECT GRAU_INSTRUCAO, COUNT(*) AS total
+FROM cadunico
+GROUP BY GRAU_INSTRUCAO
+order by total DESC
+
+SELECT TEMPO_VIVIE_NA_RUA, BOLSA_FAMILIA, COUNT(*) AS total
+FROM poprua
+GROUP BY TEMPO_VIVIE_NA_RUA, BOLSA_FAMILIA
+order by total DESC
+
+SELECT NOME, DOMICILIOS, POPULACAO
+FROM
+    popdomreg
+ORDER BY POPULACAO DESC
+
+SELECT NOME, DOMICILIOS, POPULACAO
+FROM
+    popdomreg
+ORDER BY DOMICILIOS DESC
+
+SELECT NOME, DOMICILIOS, COUNT(*) AS moradores_rua
+FROM
+    popdomreg r JOIN poprua p ON r.NOME = p.REGIONAL
+GROUP BY NOME, DOMICILIOS
+ORDER BY DOMICILIOS desc
+
+SELECT NOME, POPULACAO, COUNT(*) AS moradores_rua
+FROM
+    popdomreg r JOIN poprua p ON r.NOME = p.REGIONAL
+GROUP BY NOME, POPULACAO
+ORDER BY POPULACAO desc
+
+SELECT NOME, Count(*) AS cadunico_total FROM
+    cadunico p JOIN popdomreg r ON r.NOME = p.REGIONAL
+GROUP BY NOME
+ORDER BY cadunico_total DESC
