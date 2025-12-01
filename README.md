@@ -139,6 +139,7 @@ Se os dados estiverem carregados corretamente, a tabela de resultado aparece aba
 * 📁 /consultas → arquivos de consultas realizadas no banco
 * 📁 /creates → arquivos para gerar as tabelas
 * README.md → este arquivo
+* modelo_conceitual →  diagrama ER do banco
 
 Os arquivos .csv usando como base de dados, estão disponilizados no link da primeiro tópico, eles podem ser baixados direto do site da prefeitura. 
 
@@ -152,9 +153,6 @@ Apesar de os dados serem públicos, muitos arquivos estavam desatualizados, desa
 
 No entanto, vale ressaltar que ainda assim, um dos motivos de escolha dessa base foi a boa interface de visualização dos dados, a maioria dos outros órgãos públicos, falham em explicar o que é os dados apresentados e tivemos acesso a muitas tabelas que não sabíamos do que se tratavam. Por isso, embora a apresentação dos dados da PBH não esteja totalmente completos, no que diz respeito a dicionário de dados, descrições e qualidade da coleta e apresentação, é importante ressaltar que dos dados publicos analisados pelo grupo, a base da prefeitura tem a melhor descrição de seus dados em comparação com outros orgãos. E poucos apresentam dados nulos, então as amostras pareceram mais confiaveis para nós. 
 
-## 8. Esquema Conceitual
-
-## 9. Dicionário de dados: 
 
 
 
