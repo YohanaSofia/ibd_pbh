@@ -1,28 +1,26 @@
-# ibd_pbh
-*1. Descrição Geral
+# TRABALHO PRÁTICO DE BANCO DE DADOS
+##🗂️ Descrição do Projeto
 
-Este repositório contém o projeto desenvolvido para a disciplina Introdução a Banco de Dados (IBD).
-O objetivo é criar, documentar e analisar um banco de dados PostgreSQL utilizando conjuntos de dados abertos da Prefeitura de Belo Horizonte (PBH).
-
-As bases utilizadas incluem informações sobre:
+Este repositório contém um banco de dados PostgreSQL criado para o trabalho prático da disciplina Introdução a Banco de Dados (IBD).
+O banco foi construído a partir de dados públicos da Prefeitura de Belo Horizonte (PBH), incluindo informações de:
 
 População e domicílios por regional
 
-CadÚnico (pessoas e famílias)
+Pessoas inscritas no CadÚnico
 
 População em situação de rua
 
-Regiões Administrativas de Belo Horizonte
+Regiões Administrativas de BH
 
-O banco foi criado no PostgreSQL e todas as consultas, scripts e arquivos relevantes estão documentados neste repositório.
+O objetivo é armazenar, limpar e consultar estes dados para análises estatísticas.
 
-2. Softwares Necessários
-2.1 PostgreSQL + pgAdmin
+##🧰 1. Instalação dos Softwares Necessários
+✔️ 1.1 Instalar o PostgreSQL
 
-Download:
-https://www.postgresql.org/download/
+Baixe o instalador oficial:
+👉 https://www.postgresql.org/download/
 
-Instalar os seguintes componentes:
+Durante a instalação, certifique-se de instalar:
 
 PostgreSQL Server
 
@@ -32,97 +30,104 @@ Command Line Tools
 
 StackBuilder
 
-2.2 Instalar PostGIS via StackBuilder
+✔️ 1.2 Instalar a extensão PostGIS (necessária para colunas GEOMETRY)
 
-Algumas tabelas utilizam colunas do tipo GEOMETRY, portanto é necessário instalar a extensão PostGIS.
+Algumas tabelas incluem colunas espaciais.
+Para usá-las, instale o PostGIS via StackBuilder:
 
-Passos:
+🔧 Como instalar o PostGIS (Passo a passo):
 
-Abrir o StackBuilder
+Abra o StackBuilder
 
-Selecionar a instalação do PostgreSQL
+Selecione sua instalação do PostgreSQL
 
-Avançar
+Clique em Next
 
-Em "Spatial Extensions", selecionar PostGIS
+Na lista de ferramentas, encontre:
+Spatial Extensions → PostGIS X.X
 
-Instalar normalmente
+Marque e clique em Next
 
-Depois de instalado, a extensão precisa ser ativada dentro do banco (passo em seção posterior).
+Conclua a instalação
 
-3. Criação do Banco de Dados no pgAdmin
-3.1 Criar o banco
+Após instalado, você deve ativar a extensão dentro do seu banco com:
 
-Abrir pgAdmin
+CREATE EXTENSION postgis;
 
-Clicar em Databases
+
+Esse comando é rodado dentro do Query Tool do pgAdmin.
+
+##🗄️ 2. Criando o Banco de Dados no pgAdmin
+✔️ 2.1 Acessar o pgAdmin
+
+Abra o pgAdmin e conecte-se ao servidor PostgreSQL.
+
+✔️ 2.2 Criar o banco
+
+Clique com botão direito em Databases
 
 Create → Database
 
-Nomear como:
+Nomeie como:
 
 ibd
 
 
-Confirmar
+Salve
 
-3.2 Ativar PostGIS no banco
+✔️ 2.3 Ativar a extensão PostGIS no banco
 
-Abrir o banco ibd
+Clique no banco ibd
 
-Menu: Tools → Query Tool
+Abra → Tools → Query Tool
 
-Executar:
+Rode:
 
 CREATE EXTENSION postgis;
 
-4. Criação das Tabelas
+📑 3. Criando as Tabelas
 
-As tabelas do projeto são alimentadas por quatro arquivos originais em XLS, disponibilizados pela PBH:
+As tabelas foram construídas a partir de 4 arquivos XLS (um para cada conjunto de dados):
 
-Tabela	Arquivo original
+Tabela PostgreSQL	Arquivo de origem (XLS)
 pop_domicilios_regional_2022	20250801_populacao_domicilio_regional_2022.xls
 pessoas_cadunico	data_set_pessoas_cadunico.xls
 populacao_rua_bh	data_set_poprua_cadunico(1).xls
 regiao_administrativa_tb	20220601_regional.xls
-4.1 Conversão obrigatória para CSV
+✔️ 3.1 Antes de importar
 
-Cada arquivo XLS deve ser convertido manualmente:
+Cada XLS deve ser convertido para CSV dentro do Excel:
 
-Abrir no Excel
+Arquivo → Salvar como → CSV (Separador: ponto e vírgula)
 
-Arquivo → Salvar como
+##🔽 4. Inserindo os Dados nas Tabelas
 
-Selecionar formato CSV (separador: ponto e vírgula)
+Existem duas formas:
 
-5. Importação dos Dados nas Tabelas
-
-Existem duas abordagens possíveis.
-
-5.1 Importação pelo pgAdmin (recomendado)
-
+✔️ Método 1: Pelo pgAdmin (RECOMENDADO)
 Passo a passo:
 
-No pgAdmin, localizar a tabela criada
+Clique na tabela → Import/Export Data
 
-Botão direito → Import/Export
+Selecione Import
 
-Selecionar "Import"
+Arquivo: selecione seu CSV
 
-Configurar:
+Opções importantes:
 
 Campo	Valor
-Filename	caminho do CSV
 Format	CSV
-Header	marcado
+Header	✔ Ativado
 Delimiter	;
-Encoding	UTF8 ou WIN1252 (depende do arquivo)
+Encoding	UTF-8 ou WIN1252 (depende do arquivo)
 
-Confirmar
+Clique em OK
 
-5.2 Importação via comando COPY
+→ Os dados serão carregados na tabela.
 
-Executado no Query Tool:
+✔️ Método 2: Usando COPY (linha de comando)
+
+Rodado no Query Tool:
 
 COPY nome_da_tabela
 FROM 'C:/caminho/do/arquivo.csv'
@@ -134,46 +139,85 @@ WITH (
 );
 
 
-Caso surja erro de permissão (Windows):
+Se aparecer erro de permissão:
 
-Usar a versão cliente:
+Use:
 
 \copy nome_da_tabela FROM 'arquivo.csv' CSV HEADER DELIMITER ';'
 
-6. Execução das Consultas
+##📝 5. Rodando as Consultas
 
-Para executar as consultas SQL produzidas pelo grupo:
+Cada integrante do grupo pode subir suas consultas SQL no GitHub dentro da pasta:
 
-Abrir pgAdmin
+/consultas/
+
+
+No pgAdmin:
 
 Tools → Query Tool
 
-Inserir o comando SQL
+Cole a consulta
 
-Executar (ícone triangular)
+Execute com o botão ▶
 
-Os resultados aparecerão na aba inferior da tela.
+Se os dados estiverem carregados corretamente, a tabela de resultado aparece abaixo da consulta.
 
-7. Estrutura Recomendada do Repositório
-/csv/                       → Arquivos convertidos para CSV
-/scripts/                   → Scripts SQL de criação de tabelas
-/consultas/                 → Consultas SQL feitas pelo grupo
-/imagens/                   → Prints da operação do banco
-README.md                   → Documento principal (este arquivo)
-.gitignore                  → Arquivos ignorados pelo Git
+##🌐 6. Publicando o Projeto no GitHub
+✔️ Passo a passo:
+1. Criar repositório
 
-8. Como Reproduzir Este Banco de Dados
+Acesse GitHub
 
-Instalar PostgreSQL, pgAdmin e PostGIS
+New Repository
 
-Criar o banco ibd
+Nome: IBD-PBH
 
-Ativar extensão PostGIS
+Adicione README
 
-Criar as tabelas usando os scripts deste repositório
+Crie o repositório
 
-Converter os arquivos XLS para CSV
+2. Subir os arquivos necessários
 
-Importar os dados pelas instruções da Seção 5
+Dentro da pasta do projeto, envie:
 
-Rodar as consultas do diretório /consultas/
+📁 /scripts → arquivos .sql
+📁 /csv → arquivos CSV convertidos
+📁 /consultas → consultas dos integrantes
+📁 /imagens → prints do banco
+README.md → este arquivo
+.gitignore → evitar Upload de arquivos pesados temporários
+
+3. Commit + push
+
+No GitHub Desktop ou VSCode:
+
+Add → Commit → Push
+
+##🧐 7. Análise Crítica das Fontes de Dados
+
+Deixe este título no README — aqui você coloca sua própria análise.
+
+Sugestões para comentar:
+
+Inconsistência nos nomes das colunas
+
+Arquivos publicados em XLS que precisam ser convertidos
+
+Registros com valores nulos
+
+Dicionários de dados incompletos
+
+Diferenças de codificação (UTF-8, Windows-1252)
+
+Atraso na atualização de alguns datasets
+
+Colunas com preenchimento muito esparso
+
+Falta de padronização entre arquivos (separador, tipo dos dados, etc.)
+
+(Essa parte fica para você editar)
+
+##🏁 Conclusão
+
+Este projeto reúne, organiza e consulta bases de dados públicas da PBH utilizando PostgreSQL e PostGIS.
+O repositório permite que qualquer pessoa recrie o banco, carregue os dados e execute as análises feitas pelo grupo.
