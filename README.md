@@ -1,63 +1,61 @@
 # TRABALHO PRÁTICO DE BANCO DE DADOS
-##🗂️ Descrição do Projeto
+## 🗂️ Descrição do Projeto
 
 Este repositório contém um banco de dados PostgreSQL criado para o trabalho prático da disciplina Introdução a Banco de Dados (IBD).
 O banco foi construído a partir de dados públicos da Prefeitura de Belo Horizonte (PBH), incluindo informações de:
 
-População e domicílios por regional
+* 06/2022 - POPULAÇÃO RUA NO CADASTRO ÚNICO
+(https://dados.pbh.gov.br/dataset/populacao-de-rua/resource/27476597-54ab-4961-9d6b-f8e6a9527c5c)
 
-Pessoas inscritas no CadÚnico
+* 06/2022 - PESSOAS NO CADASTRO ÚNICO
+(https://dados.pbh.gov.br/dataset/pessoas-no-cadastro-unico/resource/28b6f308-57be-48e6-b63b-778b4151a54b)
 
-População em situação de rua
+* Região Administrativa (Regional)
+(https://dados.pbh.gov.br/dataset/regiao-administrativa)
 
-Regiões Administrativas de BH
+* 20250801_populacao_domicilio_regional_2022.csv
+(https://dados.pbh.gov.br/dataset/populacao-por-regional-2022/resource/fcc1c14e-b81e-4d1b-8b0e-966c5fe50740) 
 
 O objetivo é armazenar, limpar e consultar estes dados para análises estatísticas.
 
-##🧰 1. Instalação dos Softwares Necessários
-✔️ 1.1 Instalar o PostgreSQL
+## 🧰 1. Instalação dos Softwares Necessários
+### ✔️ 1.1 Instalar o PostgreSQL
 
 Baixe o instalador oficial:
 👉 https://www.postgresql.org/download/
 
 Durante a instalação, certifique-se de instalar:
 
-PostgreSQL Server
+*PostgreSQL Server: os arquivos abaixos veem junto com essa instalação e são necessário para o bom funcionamento do sistema:
 
-pgAdmin
+** pgAdmin
 
-Command Line Tools
+** Command Line Tools
 
-StackBuilder
+** StackBuilder
 
-✔️ 1.2 Instalar a extensão PostGIS (necessária para colunas GEOMETRY)
+### ✔️ 1.2 Instalar a extensão PostGIS (necessária para colunas GEOMETRY)
 
-Algumas tabelas incluem colunas espaciais.
-Para usá-las, instale o PostGIS via StackBuilder:
+Algumas tabelas incluem colunas espaciais. Para usá-las, instale o PostGIS via StackBuilder:
 
-🔧 Como instalar o PostGIS (Passo a passo):
+* Abra o StackBuilder
 
-Abra o StackBuilder
+* (Selecione sua instalação do PostgreSQL
 
-Selecione sua instalação do PostgreSQL
+* (Clique em Next)
 
-Clique em Next
+* Na lista de ferramentas, encontre: Spatial Extensions → PostGIS X.X
 
-Na lista de ferramentas, encontre:
-Spatial Extensions → PostGIS X.X
-
-Marque e clique em Next
-
-Conclua a instalação
+* Marque e clique em Next
 
 Após instalado, você deve ativar a extensão dentro do seu banco com:
-
+```bash
 CREATE EXTENSION postgis;
-
+````
 
 Esse comando é rodado dentro do Query Tool do pgAdmin.
 
-##🗄️ 2. Criando o Banco de Dados no pgAdmin
+## 🗄️ 2. Criando o Banco de Dados no pgAdmin
 ✔️ 2.1 Acessar o pgAdmin
 
 Abra o pgAdmin e conecte-se ao servidor PostgreSQL.
@@ -100,7 +98,7 @@ Cada XLS deve ser convertido para CSV dentro do Excel:
 
 Arquivo → Salvar como → CSV (Separador: ponto e vírgula)
 
-##🔽 4. Inserindo os Dados nas Tabelas
+## 🔽 4. Inserindo os Dados nas Tabelas
 
 Existem duas formas:
 
@@ -145,7 +143,7 @@ Use:
 
 \copy nome_da_tabela FROM 'arquivo.csv' CSV HEADER DELIMITER ';'
 
-##📝 5. Rodando as Consultas
+## 📝 5. Rodando as Consultas
 
 Cada integrante do grupo pode subir suas consultas SQL no GitHub dentro da pasta:
 
@@ -162,7 +160,7 @@ Execute com o botão ▶
 
 Se os dados estiverem carregados corretamente, a tabela de resultado aparece abaixo da consulta.
 
-##🌐 6. Publicando o Projeto no GitHub
+## 🌐 6. Publicando o Projeto no GitHub
 ✔️ Passo a passo:
 1. Criar repositório
 
