@@ -1,5 +1,5 @@
 # ibd_pbh
-1. Descrição Geral
+*1. Descrição Geral
 
 Este repositório contém o projeto desenvolvido para a disciplina Introdução a Banco de Dados (IBD).
 O objetivo é criar, documentar e analisar um banco de dados PostgreSQL utilizando conjuntos de dados abertos da Prefeitura de Belo Horizonte (PBH).
