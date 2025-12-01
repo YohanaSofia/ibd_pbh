@@ -81,7 +81,7 @@ CREATE EXTENSION postgis;
 ````
 Vale ressaltar que o PostGis é importante pois há dados na tabela que só serão reconhecidos após a instalação dessa extensão.
 
-# 📑 3. Criando as Tabelas
+## 📑 3. Criando as Tabelas
 
 As tabelas foram construídas a partir de 4 arquivos CSVs (um para cada conjunto de dados):
 
@@ -142,7 +142,7 @@ Se os dados estiverem carregados corretamente, a tabela de resultado aparece aba
 
 Os arquivos .csv usando como base de dados, estão disponilizados no link da primeiro tópico, eles podem ser baixados direto do site da prefeitura. 
 
-# 🧐 7. Análise Crítica das Fontes de Dados
+## 🧐 7. Análise Crítica das Fontes de Dados
 
 As bases de dados utilizadas no projeto foram obtidas a partir do Portal de Dados Abertos da Prefeitura de Belo Horizonte (PBH), incluindo os datasets do Cadastro Único (CadÚnico), População em Situação de Rua (PopRua) e População e Domicílios por Região Administrativa. Apesar de oficialmente disponibilizadas, as fontes apresentaram diversas limitações que impactaram a etapa de modelagem e análise.
 
