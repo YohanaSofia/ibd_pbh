@@ -85,11 +85,11 @@ Vale ressaltar que o PostGis é importante pois há dados na tabela que só ser�
 
 As tabelas foram construídas a partir de 4 arquivos CSVs (um para cada conjunto de dados):
 
-Tabela PostgreSQL	Arquivo de origem (CSV)
-pop_domicilios_regional_2022	20250801_populacao_domicilio_regional_2022.csv
-pessoas_cadunico	data_set_pessoas_cadunico.csv
-populacao_rua_bh	data_set_poprua_cadunico(1).csv
-regiao_administrativa_tb	20220601_regional.csv
+* Tabela PostgreSQL	Arquivo de origem (CSV)
+* pop_domicilios_regional_2022	20250801_populacao_domicilio_regional_2022.csv
+* pessoas_cadunico	data_set_pessoas_cadunico.csv
+* populacao_rua_bh	data_set_poprua_cadunico(1).csv
+* regiao_administrativa_tb	20220601_regional.csv
 
 Portanto, para que as consultas possam ser executadas com sucesso é preciso importar essas tabelas no pgadmin. 
 
@@ -136,13 +136,13 @@ Se os dados estiverem carregados corretamente, a tabela de resultado aparece aba
 
 ## 🌐 6. Estrutura de pastas
 
-📁 /consultas → arquivos de consultas realizadas no banco
-📁 /creates → arquivos para gerar as tabelas
-README.md → este arquivo
+* 📁 /consultas → arquivos de consultas realizadas no banco
+* 📁 /creates → arquivos para gerar as tabelas
+* README.md → este arquivo
 
 Os arquivos .csv usando como base de dados, estão disponilizados no link da primeiro tópico, eles podem ser baixados direto do site da prefeitura. 
 
-##🧐 7. Análise Crítica das Fontes de Dados
+# 🧐 7. Análise Crítica das Fontes de Dados
 
 As bases de dados utilizadas no projeto foram obtidas a partir do Portal de Dados Abertos da Prefeitura de Belo Horizonte (PBH), incluindo os datasets do Cadastro Único (CadÚnico), População em Situação de Rua (PopRua) e População e Domicílios por Região Administrativa. Apesar de oficialmente disponibilizadas, as fontes apresentaram diversas limitações que impactaram a etapa de modelagem e análise.
 
